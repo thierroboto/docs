@@ -1,28 +1,33 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: ''
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Billing and API tokens
 
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+An account on our Winston AI developer dashboard is required to create your token for authorization. If you do not already have one, please create an account and receive 2000 free credits to get started. Once registered, you will be able to generate tokens and purchase more credits if needed.
 
 <Card
-  title="Plant Store Endpoints"
+  title="Winston AI Developer dashboard"
   icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  href="https://dev.gowinston.ai"
 >
-  View the OpenAPI specification file
+  Register an account and get 2000 free credits to try the API. No credit card required.
 </Card>
 
+## Token value
+
+The token cost per word depends on the endpoint. For example, in the predict endpoint, one word equals one credit. For plagiarism, one word equals two credits.
+
+
+## Results interpretation
+
+<Note>
+  For more information about AI detection and plagiarism results, please read <a href="https://gowinston.ai/interpreting-our-ai-detection-scores/" target="_blank">this page</a>
+</Note>
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints are authenticated using Bearer tokens. You can generate your tokens on the <a href="https://dev.gowinston.ai" target="_blank">Winston AI developer dashboard</a>.
 
 ```json
 "security": [
