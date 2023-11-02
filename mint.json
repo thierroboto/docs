@@ -51,16 +51,11 @@
   "navigation": [
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Endpoints",
-      "pages": [
-        "api-reference/predict/post",
-        "api-reference/plagiarism/post"
-      ]
+      "pages": ["api-reference/predict/post", "api-reference/plagiarism/post"]
     }
   ],
   "footerSocials": {
