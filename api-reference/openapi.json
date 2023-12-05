@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Winston AI API",
+    "description": "Winston AI API specification",
     "license": {
       "name": "MIT"
     },
@@ -104,6 +104,10 @@
         "properties": {
           "text": {
             "description": "The text to scan. Minimum 300 characters. Assessments work better for texts with more than 500 characters. Maximum 100 000 characters per request.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The model version to use. Our latest and most accurate version is \"3.0\". Using \"latest\" will make sure you are always using the latest version. Options: 3.0, 2.0, latest. Default: 2.0.",
             "type": "string"
           },
           "sentences": {
