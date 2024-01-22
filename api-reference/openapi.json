@@ -103,7 +103,7 @@
         "type": "object",
         "properties": {
           "text": {
-            "description": "The text to scan. Minimum 300 characters. Assessments work better for texts with more than 600 characters. Maximum 100 000 characters per request.",
+            "description": "The text to scan. Minimum 300 characters. Texts under 600 characters may produce unreliable results and should be avoided. Maximum 100 000 characters per request.",
             "type": "string"
           },
           "version": {
