@@ -196,7 +196,7 @@
             "type": "string"
           },
           "credits_used": {
-            "description": "The credits_used field represents the number of credits consumed for processing your request. Each word that is processed by the API consumes two credits.",
+            "description": "The credits_used field represents the number of credits consumed for processing your request. Each word that is processed by the API consumes one credit.",
             "type": "integer"
           },
           "credits_remaining": {
@@ -611,7 +611,7 @@
             "type": "object"
           },
           "credits_used": {
-            "description": "The credits_used field represents the number of credits consumed for processing your request. Each image that is processed by the API consumes 300 credit.",
+            "description": "The credits_used field represents the number of credits consumed for processing your request. Each image that is processed by the API consumes 300 credits.",
             "type": "integer"
           },
           "credits_remaining": {
