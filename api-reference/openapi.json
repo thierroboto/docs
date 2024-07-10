@@ -175,7 +175,7 @@
           },
           "score": {
             "description": "A \"human\" score between 0 and 100. A low score means our system believes that the text is written by AI, and a higher score means that the system believes that the text is written by a Human.",
-            "type": "boolean"
+            "type": "integer"
           },
           "sentences": {
             "description": "This is an array of sentence objects. Each object contains two fields: text and score. Please note that assessments on smaller samples are less accurate than the general score.",
