@@ -404,20 +404,20 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "This is a standard HTTP status code. A 200 status means the request was successful.",
-            "type": "integer"
+            "type": "number",
+            "description": "HTTP status code representing the result of the plagiarism scan request."
           },
           "scanInformation": {
-            "description": "Some information about the scan.",
             "type": "object",
+            "description": "Some basic scan information about the request.",
             "properties": {
               "service": {
-                "description": "The service used to scan the text.",
-                "type": "string"
+                "type": "string",
+                "description": "Name of the service used for the request."
               },
               "scanTime": {
-                "description": "Time the text was scanned.",
-                "type": "string"
+                "type": "string",
+                "description": "Timestamp when the scan was conducted."
               },
               "inputType": {
                 "description": "The type of input we scan based on the input you provided. It can be `text | file | website` .",
@@ -426,46 +426,136 @@
             }
           },
           "result": {
-            "description": "The results field is an array which contains one or more objects, each corresponding to a different website where matching content has been found. Each object includes the following fields:",
             "type": "object",
+            "description": "The result field is the main object that contains the results of the plagiarism scan.",
             "properties": {
-              "sourceCounts": {
-                "description": "The sourceCounts field is an integer which contains the number of sources where matching content has been found.",
-                "type": "integer"
+              "score": {
+                "type": "number",
+                "description": "Plagiarism score indicating the percentage of plagiarized content in the scanned text."
               },
               "textWordCounts": {
-                "description": "The textWordCounts field is an integer which contains the number of words in the text.",
-                "type": "integer"
+                "type": "number",
+                "description": "Total number of words in the scanned text."
               },
               "totalPlagiarismWords": {
-                "description": "The totalPlagiarismWords field is an integer which contains the number of words in the text that are plagiarized.",
-                "type": "integer"
+                "type": "number",
+                "description": "Total number of words identified as plagiarized."
               },
-              "score": {
-                "description": "The score field is an integer which contains the percentage of plagiarism in the text.",
-                "type": "integer"
+              "sourceCounts": {
+                "type": "number",
+                "description": "Number of sources identified during the scan that contain plagiarized content."
               }
             }
           },
           "sources": {
-            "description": "The sources field is an array which contains one or more objects, each corresponding to a different website where matching content has been found. Each object includes the following fields:",
             "type": "array",
-            "properties": {
-              "title": {
-                "description": "The title field provides the title of the webpage where matching content has been found.",
-                "type": "string"
-              },
-              "url": {
-                "description": "The url field gives the URL of the webpage where matching content has been found.",
-                "type": "string"
-              },
-              "excerpts": {
-                "description": "The excerpts field is an array which contains snippets of text from the webpage that match the input text.",
-                "type": "object"
-              },
-              "date": {
-                "description": "The date of publication of the result. The date format may vary from one result to another.",
-                "type": "string"
+            "description": "The sources field is an array which contains one or more objects, each corresponding to a different website where matching content has been found.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "score": {
+                  "type": "number",
+                  "description": "The plagiarism percentage score for this specific source."
+                },
+                "canAccess": {
+                  "type": "boolean",
+                  "description": "Indicates if we were able to access the source content."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "URL of the source where plagiarism was found."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Title of the source document."
+                },
+                "author": {
+                  "type": "string",
+                  "description": "Author of the source document.",
+                  "nullable": true
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description or summary of the source content.",
+                  "nullable": true
+                },
+                "publishedDate": {
+                  "type": "number",
+                  "description": "Timestamp of when the source was published.",
+                  "nullable": true
+                },
+                "source": {
+                  "type": "string",
+                  "description": "Name of the source or publication.",
+                  "nullable": true
+                },
+                "citation": {
+                  "type": "boolean",
+                  "description": "Indicates if the source is cited in the input text."
+                },
+                "plagiarismWords": {
+                  "type": "number",
+                  "description": "Number of words in the input text identified as plagiarized from this source found."
+                },
+                "totalNumberOfWords": {
+                  "type": "number",
+                  "description": "Total number of words in the input text."
+                },
+                "plagiarismFound": {
+                  "type": "array",
+                  "description": "List of plagiarism sequence found in the input text from this source.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "startIndex": {
+                        "type": "number",
+                        "description": "Starting index of the plagiarized sequence in the text."
+                      },
+                      "endIndex": {
+                        "type": "number",
+                        "description": "Ending index of the plagiarized sequence in the text."
+                      },
+                      "sequence": {
+                        "type": "string",
+                        "description": "The plagiarized text sequence.",
+                        "nullable": true
+                      }
+                    }
+                  }
+                },
+                "is_exclude": {
+                  "type": "boolean",
+                  "description": "Indicates if this source should be excluded from the final results."
+                }
+              }
+            }
+          },
+          "citations": {
+            "type": "array",
+            "description": "The citations is an array which contains one or more objects, each corresponding to a different website where the website was cited in the provided text.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "indexes": {
+            "type": "array",
+            "description": "List of plagiarism sequences found in the input text.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "startIndex": {
+                  "type": "number",
+                  "description": "Starting index of the plagiarized sequence in the document."
+                },
+                "endIndex": {
+                  "type": "number",
+                  "description": "Ending index of the plagiarized sequence in the document."
+                },
+                "sequence": {
+                  "type": "string",
+                  "description": "The plagiarized text sequence.",
+                  "nullable": true
+                }
               }
             }
           },
