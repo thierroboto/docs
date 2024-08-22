@@ -523,7 +523,7 @@
                     }
                   }
                 },
-                "is_exclude": {
+                "is_excluded": {
                   "type": "boolean",
                   "description": "Indicates if this source should be excluded from the final results."
                 }
