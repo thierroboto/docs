@@ -259,7 +259,7 @@
             "type": "string"
           },
           "file": {
-            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file must be of type .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
+            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file must be in plain .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
             "type": "string"
           },
           "website": {
@@ -338,7 +338,7 @@
             "type": "string"
           },
           "file": {
-            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file must be of type .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
+            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file must be in plain .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
             "type": "string"
           },
           "website": {
