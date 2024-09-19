@@ -346,7 +346,7 @@
             "type": "string"
           },
           "excluded_sources": {
-            "description": "An array of source to exclude from the scan. The exclude source won't be taken into account for the plagiarism scan score. Source can either be a domain name like `example.com` or a url like `https://example.com`. If you specify a domain name, the API will exclude all the urls belonging to that domain and all subdomains. Sources are case-sensitive.",
+            "description": "An array of sources to exclude from the scan. The excluded sources won't be taken into account for the plagiarism scan score. Sources can either be a domain name like `example.com` or a url like `https://example.com`. If you specify a domain name, the API will exclude all the urls belonging to that domain and all subdomains. Sources are case-sensitive.",
             "type": "array",
             "items": {
               "type": "string"
