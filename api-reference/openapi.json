@@ -345,6 +345,13 @@
             "description": "A website URL to scan. If you supply a website, the API will fetch the content of the website and scan it. The website must be publicly accessible. It's important to know that the website has priority over the text and the file, so if you give a text, a file and a website, it's the website that will be scanned.",
             "type": "string"
           },
+          "excluded_sources": {
+            "description": "An array of sources to exclude from the scan. The excluded sources won't be taken into account for the plagiarism scan score. Sources can either be a domain name like `example.com` or a url like `https://example.com`. If you specify a domain name, the API will exclude all the urls belonging to that domain and all subdomains. Sources are case-sensitive.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "language": {
             "description": "2 letter language code. We accept all languages. Default: en.",
             "type": "string",
