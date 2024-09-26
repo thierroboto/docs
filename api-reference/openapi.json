@@ -440,6 +440,10 @@
                 "type": "number",
                 "description": "Plagiarism score indicating the percentage of plagiarized content in the scanned text."
               },
+              "sourceCounts": {
+                "type": "number",
+                "description": "Number of sources identified during the scan that contain plagiarized content."
+              },
               "textWordCounts": {
                 "type": "number",
                 "description": "Total number of words in the scanned text."
@@ -447,10 +451,6 @@
               "totalPlagiarismWords": {
                 "type": "number",
                 "description": "Total number of words identified as plagiarized."
-              },
-              "sourceCounts": {
-                "type": "number",
-                "description": "Number of sources identified during the scan that contain plagiarized content."
               },
               "identicalWordCounts": {
                 "type": "number",
@@ -484,6 +484,22 @@
                   "type": "string",
                   "description": "Title of the source document."
                 },
+                "plagiarismWords": {
+                  "type": "number",
+                  "description": "Number of words in the input text identified as plagiarized from this source found."
+                },
+                "identicalWordCounts": {
+                  "type": "number",
+                  "description": "Number of words identified as plagiarized that are identical to the source content."
+                },
+                "similarWordCounts": {
+                  "type": "number",
+                  "description": "Number of words identified as plagiarized that are similar to the source content."
+                },
+                "totalNumberOfWords": {
+                  "type": "number",
+                  "description": "Total number of words in the input text."
+                },
                 "author": {
                   "type": "string",
                   "description": "Author of the source document.",
@@ -507,22 +523,6 @@
                 "citation": {
                   "type": "boolean",
                   "description": "Indicates if the source is cited in the input text."
-                },
-                "plagiarismWords": {
-                  "type": "number",
-                  "description": "Number of words in the input text identified as plagiarized from this source found."
-                },
-                "identicalWordCounts": {
-                  "type": "number",
-                  "description": "Number of words identified as plagiarized that are identical to the source content."
-                },
-                "similarWordCounts": {
-                  "type": "number",
-                  "description": "Number of words identified as plagiarized that are similar to the source content."
-                },
-                "totalNumberOfWords": {
-                  "type": "number",
-                  "description": "Total number of words in the input text."
                 },
                 "plagiarismFound": {
                   "type": "array",
