@@ -567,6 +567,7 @@
                   "type": "string",
                   "description": "The similar word."
                 }
+              }
             }
           },
           "citations": {
