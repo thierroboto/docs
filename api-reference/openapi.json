@@ -451,6 +451,14 @@
               "sourceCounts": {
                 "type": "number",
                 "description": "Number of sources identified during the scan that contain plagiarized content."
+              },
+              "identicalWordCounts": {
+                "type": "number",
+                "description": "Number of words identified as plagiarized that are identical to the source content."
+              },
+              "similarWordCounts": {
+                "type": "number",
+                "description": "Number of words identified as plagiarized that are similar to the source content."
               }
             }
           },
@@ -504,6 +512,14 @@
                   "type": "number",
                   "description": "Number of words in the input text identified as plagiarized from this source found."
                 },
+                "identicalWordCounts": {
+                  "type": "number",
+                  "description": "Number of words identified as plagiarized that are identical to the source content."
+                },
+                "similarWordCounts": {
+                  "type": "number",
+                  "description": "Number of words identified as plagiarized that are similar to the source content."
+                },
                 "totalNumberOfWords": {
                   "type": "number",
                   "description": "Total number of words in the input text."
@@ -535,6 +551,22 @@
                   "description": "Indicates if this source should be excluded from the final results."
                 }
               }
+            }
+          },
+          "similarWords": {
+            "type": "array",
+            "description": "List of similar words found in the input text.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "number",
+                  "description": "Starting index of the similar word in the document."
+                },
+                "word": {
+                  "type": "string",
+                  "description": "The similar word."
+                }
             }
           },
           "citations": {
