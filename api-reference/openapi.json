@@ -553,6 +553,10 @@
               }
             }
           },
+          "text": {
+            "type": "string",
+            "description": "The input text that was used for the plagiarism scan."
+          },
           "similarWords": {
             "type": "array",
             "description": "List of similar words found in the input text.",
