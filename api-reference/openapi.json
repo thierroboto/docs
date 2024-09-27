@@ -334,7 +334,7 @@
         "type": "object",
         "properties": {
           "text": {
-            "description": "The text to scan. It is required except if you supply a website or a file. Minimum 300 characters. Texts under 600 characters may produce unreliable results and should be avoided. Maximum 100 000 characters per request.",
+            "description": "The text to be scanned. This is required unless you provide a website or file. Each request must contain at least 100 characters and no more than 120,000 characters.",
             "type": "string"
           },
           "file": {
