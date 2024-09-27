@@ -324,7 +324,7 @@
         "type": "object",
         "properties": {
           "text": {
-            "description": "The text to scan. Minimum 300 characters. Maximum 100 000 characters.",
+            "description": "The text to be scanned. Each request must contain at least 16 words and no more than 20,000 words.",
             "type": "string"
           }
         }
