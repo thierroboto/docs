@@ -275,7 +275,7 @@
             "type": "boolean"
           },
           "language": {
-            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl) and german (de). default: en. Optional.",
+            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de) and chinese simplified (zh). default: en. Optional.",
             "type": "string"
           }
         }
