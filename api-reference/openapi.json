@@ -1030,12 +1030,14 @@
         "type": "object",
         "properties": {
           "first_text": {
-            "description": "The first text to compare",
-            "type": "string"
+            "description": "The first text to compare. Maximum 120,000 characters.",
+            "type": "string",
+            "maxLength": 120000
           },
           "second_text": {
-            "description": "The second text to compare against the first text",
-            "type": "string"
+            "description": "The second text to compare against the first text. Maximum 120,000 characters.",
+            "type": "string",
+            "maxLength": 120000
           }
         }
       },
@@ -1048,7 +1050,7 @@
           },
           "similarity_score": {
             "type": "number",
-            "description": "Overall similarity score between the two texts (0-100)"
+            "description": "Overall similarity score between the two texts (0-100). \n\n 0 means no similarity, 100 means identical."
           },
           "first_text": {
             "type": "object",
@@ -1075,11 +1077,11 @@
                       "type": "string",
                       "description": "Type of match (identical, similar, etc.)"
                     },
-                    "wordCount": {
+                    "word_count": {
                       "type": "integer",
                       "description": "Number of words in this segment"
                     },
-                    "indexStart": {
+                    "index_start": {
                       "type": "integer",
                       "description": "Starting index of the segment in the text"
                     },
@@ -1117,11 +1119,11 @@
                       "type": "string",
                       "description": "Type of match (identical, similar, etc.)"
                     },
-                    "wordCount": {
+                    "word_count": {
                       "type": "integer",
                       "description": "Number of words in this segment"
                     },
-                    "indexStart": {
+                    "index_start": {
                       "type": "integer",
                       "description": "Starting index of the segment in the text"
                     },
@@ -1135,12 +1137,12 @@
             }
           },
           "credits_used": {
-            "type": "integer",
-            "description": "Number of credits consumed for this request"
+            "description": "The credits_used field represents the number of credits consumed for processing your request. Each text comparison request consumes the total number of words in both texts divided by 2.",
+            "type": "integer"
           },
           "credits_remaining": {
-            "type": "integer",
-            "description": "Number of credits remaining in your account"
+            "description": "The credits_remaining field shows how many credits you have left in your account after your request has been processed.",
+            "type": "integer"
           }
         }
       }
