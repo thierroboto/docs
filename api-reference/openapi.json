@@ -246,6 +246,44 @@
           }
         }
       }
+    },
+    "/v2/text-compare": {
+      "post": {
+        "description": "Compare two texts to find similarities and differences between them. This endpoint analyzes both texts and returns detailed information about matching content, word counts, and similarity scores.",
+        "requestBody": {
+          "description": "The text comparison request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextCompare"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Text comparison response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextCompare-response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -984,6 +1022,127 @@
           },
           "description": {
             "type": "string"
+          }
+        }
+      },
+      "TextCompare": {
+        "required": ["first_text", "second_text"],
+        "type": "object",
+        "properties": {
+          "first_text": {
+            "description": "The first text to compare. Maximum 120,000 characters.",
+            "type": "string",
+            "maxLength": 120000
+          },
+          "second_text": {
+            "description": "The second text to compare against the first text. Maximum 120,000 characters.",
+            "type": "string",
+            "maxLength": 120000
+          }
+        }
+      },
+      "TextCompare-response": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code representing the result of the text comparison request"
+          },
+          "similarity_score": {
+            "type": "number",
+            "description": "Overall similarity score between the two texts (0-100). \n\n 0 means no similarity, 100 means identical."
+          },
+          "first_text": {
+            "type": "object",
+            "properties": {
+              "total_word_count": {
+                "type": "integer",
+                "description": "Total number of words in the first text"
+              },
+              "matching_word_count": {
+                "type": "integer",
+                "description": "Number of words that match with the second text"
+              },
+              "similarity_percentage": {
+                "type": "number",
+                "description": "Percentage of matching content in the first text"
+              },
+              "items": {
+                "type": "array",
+                "description": "List of matching segments in the first text",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "Type of match (identical, similar, etc.)"
+                    },
+                    "word_count": {
+                      "type": "integer",
+                      "description": "Number of words in this segment"
+                    },
+                    "index_start": {
+                      "type": "integer",
+                      "description": "Starting index of the segment in the text"
+                    },
+                    "length": {
+                      "type": "integer",
+                      "description": "Length of the segment in characters"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "second_text": {
+            "type": "object",
+            "properties": {
+              "total_word_count": {
+                "type": "integer",
+                "description": "Total number of words in the second text"
+              },
+              "matching_word_count": {
+                "type": "integer",
+                "description": "Number of words that match with the first text"
+              },
+              "similarity_percentage": {
+                "type": "number",
+                "description": "Percentage of matching content in the second text"
+              },
+              "items": {
+                "type": "array",
+                "description": "List of matching segments in the second text",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "Type of match (identical, similar, etc.)"
+                    },
+                    "word_count": {
+                      "type": "integer",
+                      "description": "Number of words in this segment"
+                    },
+                    "index_start": {
+                      "type": "integer",
+                      "description": "Starting index of the segment in the text"
+                    },
+                    "length": {
+                      "type": "integer",
+                      "description": "Length of the segment in characters"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "credits_used": {
+            "description": "The credits_used field represents the number of credits consumed for processing your request. Each text comparison request consumes the total number of words in both texts divided by 2.",
+            "type": "integer"
+          },
+          "credits_remaining": {
+            "description": "The credits_remaining field shows how many credits you have left in your account after your request has been processed.",
+            "type": "integer"
           }
         }
       }
