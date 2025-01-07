@@ -305,7 +305,7 @@
             "type": "string"
           },
           "version": {
-            "description": "The model version to use. Our latest and most accurate version is \"3.0\". Using \"latest\" will make sure you are always using the latest version. Options: 3.0, 2.0, latest. Default: 2.0.",
+            "description": "The model version to use. Our latest and most accurate version is \"3.0\". Using \"latest\" will make sure you are always using the latest version. Options: 3.1, 3.0, 2.0, latest. Default: 3.0. Note: Version 3.1 is identical to 3.0 but preserves newline characters in the returned sentences, while 3.0 removes them.",
             "type": "string"
           },
           "sentences": {
