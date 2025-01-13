@@ -313,7 +313,7 @@
             "type": "boolean"
           },
           "language": {
-            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de) and chinese simplified (zh). default: en. Optional.",
+            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de) and chinese simplified (zh). You can also use \"auto\" to automatically detect the language based on the text. default: auto. Optional.",
             "type": "string"
           }
         }
