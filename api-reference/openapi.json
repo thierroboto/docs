@@ -354,6 +354,10 @@
           "credits_remaining": {
             "description": "The credits_remaining field shows how many credits you have left in your account after your request has been processed.",
             "type": "integer"
+          },
+          "readability_score": {
+            "description": "A readability score between 0 and 100 that indicates how easy it is to read and understand the text based on the provided language. A higher score means the text is more readable and easier to understand.",
+            "type": "integer"
           }
         }
       },
@@ -979,7 +983,7 @@
               },
               "keywords": {
                 "type": "array",
-                "description": "Keywords to express the subject of the image. Keywords may be free text and don’t have to be taken from a controlled vocabulary. Codes from the controlled vocabulary IPTC Subject NewsCodes must go to the Subject Code field."
+                "description": "Keywords to express the subject of the image. Keywords may be free text and don't have to be taken from a controlled vocabulary. Codes from the controlled vocabulary IPTC Subject NewsCodes must go to the Subject Code field."
               },
               "ImageCreator": {
                 "type": "object",
