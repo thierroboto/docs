@@ -660,7 +660,7 @@
             "type": "string"
           },
           "version": {
-            "description": "The model version to use. Our latest and most accurate version is \"2\". Using \"latest\" will make sure you are always using the latest version. Options: 2, 1, latest. Default: 1.",
+            "description": "The model version to use. Our latest and most accurate version is \"2\". Using \"latest\" will make sure you are always using the latest version. Options: 2, 1, latest. Default: 2",
             "type": "string"
           }
         }
