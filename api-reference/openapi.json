@@ -305,7 +305,7 @@
             "type": "string"
           },
           "version": {
-            "description": "The model version to use. Our latest and most accurate version is \"3.0\". Using \"latest\" will make sure you are always using the latest version. Options: 3.1, 3.0, 2.0, latest. Default: 3.0. Note: Version 3.1 is identical to 3.0 but preserves newline characters in the returned sentences, while 3.0 removes them.",
+            "description": "The model version to use. Our latest and most accurate version is \"4.0\". Using \"latest\" will make sure you are always using the latest version. Options: 4.0, 3.1, 3.0, 2.0, latest. Default: 4.0. Note: Version 3.1 is identical to 3.0 but preserves newline characters in the returned sentences, while 3.0 removes them.",
             "type": "string"
           },
           "sentences": {
@@ -358,6 +358,10 @@
           "readability_score": {
             "description": "A readability score between 0 and 100 that indicates how easy it is to read and understand the text based on the provided language. A higher score means the text is more readable and easier to understand.",
             "type": "integer"
+          },
+          "version": {
+            "description": "The model version used to generate the prediction based on the input you provided.",
+            "type": "string"
           }
         }
       },
