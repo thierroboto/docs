@@ -664,7 +664,7 @@
         "type": "object",
         "properties": {
           "url": {
-            "description": "The URL of the image to scan. The image must be publicly accessible and must be a valid url. We only accept `JPG/JPEG/PNG/WEBP` images.",
+            "description": "The URL of the image to scan. The image must be publicly accessible and must be a valid url. We only accept `JPG/JPEG/PNG/WEBP` images. The image must be at least 256x256 pixels in size for the best results.",
             "type": "string"
           },
           "version": {
