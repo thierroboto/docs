@@ -362,6 +362,20 @@
           "version": {
             "description": "The model version used to generate the prediction based on the input you provided.",
             "type": "string"
+          },
+          "attack_detected": {
+            "type": "object",
+            "description": "An object with two boolean properties indicating if the text contains zero-width spaces or homoglyph attacks.",
+            "properties": {
+              "zero_width_space": {
+                "type": "boolean",
+                "description": "Indicates if the text contains zero-width spaces."
+              },
+              "homoglyph_attack": {
+                "type": "boolean",
+                "description": "Indicates if the text contains homoglyph attacks."
+              }
+            }
           }
         }
       },
