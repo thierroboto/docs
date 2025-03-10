@@ -347,22 +347,6 @@
             "description": "The type of input we scan based on the input you provided. It can be `text | file | website` .",
             "type": "string"
           },
-          "credits_used": {
-            "description": "The credits_used field represents the number of credits consumed for processing your request. Each word that is processed by the API consumes one credit.",
-            "type": "integer"
-          },
-          "credits_remaining": {
-            "description": "The credits_remaining field shows how many credits you have left in your account after your request has been processed.",
-            "type": "integer"
-          },
-          "readability_score": {
-            "description": "A readability score between 0 and 100 that indicates how easy it is to read and understand the text based on the provided language. A higher score means the text is more readable and easier to understand.",
-            "type": "integer"
-          },
-          "version": {
-            "description": "The model version used to generate the prediction based on the input you provided.",
-            "type": "string"
-          },
           "attack_detected": {
             "type": "object",
             "description": "An object with two boolean properties indicating if the text contains zero-width spaces or homoglyph attacks.",
@@ -376,6 +360,27 @@
                 "description": "Indicates if the text contains homoglyph attacks."
               }
             }
+          },
+          "readability_score": {
+            "description": "A readability score between 0 and 100 that indicates how easy it is to read and understand the text based on the provided language. A higher score means the text is more readable and easier to understand.",
+            "type": "integer"
+          },
+          "credits_used": {
+            "description": "The credits_used field represents the number of credits consumed for processing your request. Each word that is processed by the API consumes one credit.",
+            "type": "integer"
+          },
+          "credits_remaining": {
+            "description": "The credits_remaining field shows how many credits you have left in your account after your request has been processed.",
+            "type": "integer"
+          },
+
+          "version": {
+            "description": "The model version used to generate the prediction based on the input you provided.",
+            "type": "string"
+          },
+          "language": {
+            "description": "The language of the text detected. It can be `en | fr | es | pt | nl | de | zh`.",
+            "type": "string"
           }
         }
       },
