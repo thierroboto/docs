@@ -618,6 +618,20 @@
               }
             }
           },
+          "attackDetected": {
+            "type": "object",
+            "description": "An object with two boolean properties indicating if the text contains zero-width spaces or homoglyph attacks.",
+            "properties": {
+              "zero_width_space": {
+                "type": "boolean",
+                "description": "Indicates if the text contains zero-width spaces."
+              },
+              "homoglyph_attack": {
+                "type": "boolean",
+                "description": "Indicates if the text contains homoglyph attacks."
+              }
+            }
+          },
           "text": {
             "type": "string",
             "description": "The input text that was used for the plagiarism scan."
