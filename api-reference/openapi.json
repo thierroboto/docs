@@ -331,7 +331,7 @@
         "required": ["text"],
         "properties": {
           "text": {
-            "description": "The text to scan. It is required except if you supply a website or a file. For regular endpoint: Minimum 300 characters, maximum 150,000 characters. For long-text endpoint: Minimum 150,000 characters, maximum 300,000 characters. Texts under 600 characters may produce unreliable results and should be avoided.",
+            "description": "The text to scan. It is required except if you supply a website or a file. Minimum 300 characters. Texts under 600 characters may produce unreliable results and should be avoided. Maximum 150 000 characters per request. For longer text, use the long-text endpoint here: https://api.winston.ai/v2/ai-content-detection/long-text",
             "type": "string"
           },
           "file": {
@@ -441,7 +441,7 @@
             "type": "string"
           },
           "file": {
-            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
+            "description": "A file to scan. If you supply a file, the API will scan the content of the file. The file must be in plain .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
             "type": "string"
           },
           "website": {
