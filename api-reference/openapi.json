@@ -305,7 +305,7 @@
             "type": "string"
           },
           "version": {
-            "description": "The model version to use. Our latest and most accurate version is \"4.8\". Using \"latest\" will make sure you are always using the latest version. Options: 4.8, 4.7, 4.6, 4.5, 4.4, 4.3, 4.2, 4.1, 4.0, 3.1, 3.0, 2.0, latest. Default: 4.8. Note: Version 3.1 is identical to 3.0 but preserves newline characters in the returned sentences, while 3.0 removes them.",
+            "description": "The model version to use. Our latest and most accurate version is \"4.9\". Using \"latest\" will make sure you are always using the latest version. Options: 4.9, 4.8, 4.7, 4.6, 4.5, 4.4, 4.3, 4.2, 4.1, 4.0, 3.1, 3.0, 2.0, latest. Default: 4.9. Note: Version 3.1 is identical to 3.0 but preserves newline characters in the returned sentences, while 3.0 removes them.",
             "type": "string"
           },
           "sentences": {
@@ -313,7 +313,7 @@
             "type": "boolean"
           },
           "language": {
-            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de), polish (pl), italian (it), indonesian (id), tagalog (tl) and chinese simplified (zh). You can also use \"auto\" to automatically detect the language based on the text. default: auto. Optional.",
+            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de), polish (pl), italian (it), romanian (ro), indonesian (id), tagalog (tl) and chinese simplified (zh). You can also use \"auto\" to automatically detect the language based on the text. default: auto. Optional.",
             "type": "string"
           }
         }
