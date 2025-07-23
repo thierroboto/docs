@@ -1,0 +1,180 @@
+---
+title: "MCP Server"
+description: "Run the Winston AI Model Context Protocol server on your own infrastructure or locally via npx, Docker, or from source."
+---
+
+# Winston AI MCP Server ⚡️
+
+The **Model Context Protocol (MCP) Server** lets you self-host the same detection capabilities that power the Winston AI API. Use it for fully offline workflows, or to integrate with tools like Cursor or Claude Desktop.
+
+## ✨ Features
+
+- **AI Text Detection** – human vs AI classification with sentence-level analysis
+- **AI Image Detection** – identify AI-generated images, C2PA metadata & watermark detection
+- **Plagiarism Detection** – internet-scale plagiarism scans with detailed source reports
+- **Text Comparison** – bidirectional similarity analysis between two texts
+
+_All functionality and credit costs are identical to the hosted API._
+
+## 🌐 API Integration
+
+> This section shows how to call the MCP server once it is running (locally or in production).
+
+### Base URL 
+
+The Base URL for the Host MCP server is 
+
+```bash
+https://api.gowinston.ai/mcp/v1
+```
+
+The server exposes a **JSON-RPC 2.0 API** over HTTPS `POST`. Each request must contain the fields:
+
+```jsonc
+{
+  "jsonrpc": "2.0",      // protocol version
+  "method": "…",         // tools/list or tools/call
+  "id": 1,                // correlation id
+  "params": { … }         // depends on the method
+}
+```
+
+### cURL Examples
+
+#### Example: List tools
+
+```bash
+curl --location 'https://api.gowinston.ai/mcp/v1' \
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'jsonrpc: 2.0' \
+--data '{
+  "jsonrpc": "2.0",
+  "method": "tools/list",
+  "id": 1
+}'
+```
+
+#### Example: AI Text Detection
+
+```bash
+curl --location 'https://api.gowinston.ai/mcp/v1' \
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "ai-text-detection",
+    "arguments": {
+      "text": "Your text to analyze (minimum 300 characters)",
+      "apiKey": "your-winston-ai-api-key"
+    }
+  }
+}'
+```
+
+#### Example: AI Image Detection
+
+```bash
+curl --location 'https://api.gowinston.ai/mcp/v1' \
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "ai-image-detection",
+    "arguments": {
+      "url": "https://example.com/image.jpg",
+      "apiKey": "your-winston-ai-api-key"
+    }
+  }
+}'
+```
+
+#### Example: Plagiarism Detection
+
+```bash
+curl --location 'https://api.gowinston.ai/mcp/v1' \
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "tools/call",
+  "params": {
+    "name": "plagiarism-detection",
+    "arguments": {
+      "text": "Text to check for plagiarism (minimum 100 characters)",
+      "apiKey": "your-winston-ai-api-key"
+    }
+  }
+}'
+```
+#### Example: Text Comparison
+
+```bash
+curl --location 'https://api.gowinston.ai/mcp/v1' \
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--data '{
+  "jsonrpc": "2.0",
+  "id": 4,
+  "method": "tools/call",
+  "params": {
+    "name": "text-compare",
+    "arguments": {
+      "first_text": "First text to compare",
+      "second_text": "Second text to compare",
+      "apiKey": "your-winston-ai-api-key"
+    }
+  }
+}'
+```
+
+**Note:** Replace `your-winston-ai-api-key` with your actual Winston AI API key. You can get one at [https://dev.gowinston.ai](https://dev.gowinston.ai).
+
+## 🔧 Local configuration 
+
+### For Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "winston-ai-mcp": {
+      "command": "npx",
+      "args": ["-y", "winston-ai-mcp"],
+      "env": {
+        "WINSTONAI_API_KEY": "your-api-key"
+      }
+    }
+  }
+}
+```
+
+### For Cursor IDE
+
+Add to your Cursor configuration:
+
+```json
+{
+  "mcpServers": {
+    "winston-ai-mcp": {
+      "command": "npx",
+      "args": ["-y", "winston-ai-mcp"],
+      "env": {
+        "WINSTONAI_API_KEY": "your-api-key"
+      }
+    }
+  }
+}
+```
+
+For more information (Docker 🐳, NPM package, running from source, etc.) see the [GitHub repository](https://github.com/gowinston-ai/winston-ai-mcp-server).
+
+
