@@ -52,7 +52,7 @@
   "navigation": [
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction", "api-reference/mcp-server"]
+      "pages": ["api-reference/introduction", "api-reference/mcp-server", "api-reference/changelog"]
     },
     {
       "group": "Endpoints",
