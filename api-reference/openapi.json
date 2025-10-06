@@ -418,7 +418,7 @@
             }
           },
           "language": {
-            "description": "2 letter language code. We accept all languages. Default: en.",
+            "description": "2 letter language code. Default: en. \n\n The plagiarism-checking endpoint currently supports 43 languages: \n English (en), French (fr), German (de), Spanish (es), Portuguese (pt), Dutch (nl), Italian (it), Chinese (zh), Norwegian (no), Swedish (sv), Danish (da), Finnish (fi), Icelandic (is), Polish (pl), Czech (cs), Slovak (sk), Romanian (ro), Hungarian (hu), Bulgarian (bg), Croatian (hr), Greek (el), Turkish (tr), Hebrew (he), Arabic (ar), Vietnamese (vi), Malay (ms), Thai (th), Korean (ko), Japanese (ja), Russian (ru), Tagalog (tl), Hindi (hi), Bengali (bn), Persian (fa), Urdu (ur), Indonesian (id), Malayalam (ml), Tamil (ta), Telugu (te), Kannada (kn), Marathi (mr), Gujarati (gu) and Ukrainian (uk).",
             "type": "string",
             "default": "en"
           },
