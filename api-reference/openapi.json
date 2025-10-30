@@ -45,11 +45,161 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNSUPPORTED_MEDIA_TYPE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request content type is not supported. Make sure you pass a valid content type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "SERVICE_UNAVAILABLE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The service is currently unavailable. Please try again later."
+                    }
+                  }
                 }
               }
             }
@@ -73,7 +223,7 @@
         },
         "responses": {
           "200": {
-            "description": "Ai content detection response",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -83,11 +233,161 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNSUPPORTED_MEDIA_TYPE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request content type is not supported. Make sure you pass a valid content type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "SERVICE_UNAVAILABLE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The service is currently unavailable. Please try again later."
+                    }
+                  }
                 }
               }
             }
@@ -110,7 +410,7 @@
           "required": true
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Plagiarism response",
             "content": {
               "application/json": {
@@ -121,7 +421,17 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
@@ -148,7 +458,7 @@
           "required": true
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Plagiarism response",
             "content": {
               "application/json": {
@@ -159,11 +469,161 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNSUPPORTED_MEDIA_TYPE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request content type is not supported. Make sure you pass a valid content type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "SERVICE_UNAVAILABLE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The service is currently unavailable. Please try again later."
+                    }
+                  }
                 }
               }
             }
@@ -186,7 +646,7 @@
           "required": true
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Image detection Response",
             "content": {
               "application/json": {
@@ -224,7 +684,7 @@
           "required": true
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Image detection Response",
             "content": {
               "application/json": {
@@ -235,11 +695,161 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNSUPPORTED_MEDIA_TYPE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request content type is not supported. Make sure you pass a valid content type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "SERVICE_UNAVAILABLE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The service is currently unavailable. Please try again later."
+                    }
+                  }
                 }
               }
             }
@@ -273,11 +883,121 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
                 }
               }
             }
