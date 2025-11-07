@@ -1138,9 +1138,9 @@
             }
           },
           "language": {
-            "description": "2 letter language code. Default: en. \n\n The plagiarism-checking endpoint currently supports 45 languages: \n English (en), French (fr), German (de), Spanish (es), Portuguese (pt), Dutch (nl), Italian (it), Chinese (zh), Norwegian (no), Swedish (sv), Danish (da), Finnish (fi), Icelandic (is), Irish (ga), Polish (pl), Czech (cs), Slovak (sk), Romanian (ro), Hungarian (hu), Bulgarian (bg), Croatian (hr), Greek (el), Turkish (tr), Hebrew (he), Arabic (ar), Vietnamese (vi), Malay (ms), Thai (th), Korean (ko), Japanese (ja), Russian (ru), Tagalog (tl), Hindi (hi), Bengali (bn), Persian (fa), Urdu (ur), Indonesian (id), Malayalam (ml), Tamil (ta), Telugu (te), Kannada (kn), Marathi (mr), Gujarati (gu), Ukrainian (uk) and Albanian (sq).",
+            "description": "2 letter language code. Default: auto. \n\n If you put 'auto', the API will automatically detect the language of the text. \n\n The plagiarism-checking endpoint currently supports 45 languages: \n English (en), French (fr), German (de), Spanish (es), Portuguese (pt), Dutch (nl), Italian (it), Chinese (zh), Norwegian (no), Swedish (sv), Danish (da), Finnish (fi), Icelandic (is), Irish (ga), Polish (pl), Czech (cs), Slovak (sk), Romanian (ro), Hungarian (hu), Bulgarian (bg), Croatian (hr), Greek (el), Turkish (tr), Hebrew (he), Arabic (ar), Vietnamese (vi), Malay (ms), Thai (th), Korean (ko), Japanese (ja), Russian (ru), Tagalog (tl), Hindi (hi), Bengali (bn), Persian (fa), Urdu (ur), Indonesian (id), Malayalam (ml), Tamil (ta), Telugu (te), Kannada (kn), Marathi (mr), Gujarati (gu), Ukrainian (uk) and Albanian (sq).",
             "type": "string",
-            "default": "en"
+            "default": "auto"
           },
           "country": {
             "description": "The country code of the country where the text was written. We accept all country codes. Default: us.",
@@ -1214,6 +1214,10 @@
               "inputType": {
                 "description": "The type of input we scan based on the input you provided. It can be `text | file | website` .",
                 "type": "string"
+              },
+              "language": {
+                "type": "string",
+                "description": "The language of the text detected."
               }
             }
           },
