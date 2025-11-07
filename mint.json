@@ -39,7 +39,7 @@
       "url": "https://dev.gowinston.ai"
     },
     {
-      "name": "Legacy app",
+      "name": "Main dashboard",
       "icon": "rocket",
       "url": "https://app.gowinston.ai"
     },
@@ -57,7 +57,7 @@
     {
       "group": "Endpoints",
       "pages": ["api-reference/v2/ai-content-detection/post", "api-reference/v2/image-detection/post", 
-      "api-reference/v2/plagiarism/post", "api-reference/v2/text-compare/post"],
+      "api-reference/v2/plagiarism/post", "api-reference/v2/fact-checker/post", "api-reference/v2/text-compare/post"],
       "version": "v2"
     },
     {

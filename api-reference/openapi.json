@@ -6,7 +6,7 @@
     "license": {
       "name": "MIT"
     },
-    "version": "1.0.2"
+    "version": "4.11.4"
   },
   "servers": [
     {
@@ -19,6 +19,194 @@
     }
   ],
   "paths": {
+    "/v2/fact-checker": {
+      "post": {
+        "description": "The Fact Checker endpoint is a powerful tool designed to verify the accuracy of a given piece of content by checking it against a a variety of trusted sources. The cost is 2 credits per word.",
+        "requestBody": {
+          "description": "The Fact Checker request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FactCheckerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Fact Checker response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FactCheckerResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "BAD_REQUEST"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request was invalid and could not be processed. Make sure you pass valid arguments."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNAUTHORIZED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Pass a valid API key in the Authorization header as a Bearer token."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required (insufficient credits)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "PAYMENT_REQUIRED"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "Insufficient credits. Make sure you have enough credits to make the request."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "default": "FORBIDDEN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "default": "The request was forbidden. Make sure you pass a valid URL or document that we can access."
+                      }
+                    }
+                  } 
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "UNSUPPORTED_MEDIA_TYPE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The request content type is not supported. Make sure you pass a valid content type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "TOO_MANY_REQUESTS"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "You have exceeded the rate limit. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "INTERNAL_SERVER_ERROR"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "An unexpected error occurred. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "default": "SERVICE_UNAVAILABLE"
+                    },
+                    "description": {
+                      "type": "string",
+                      "default": "The service is currently unavailable. Please try again later."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/ai-content-detection": {
       "post": {
         "description": "The Human Score is a metric used by Winston AI to estimate the likelihood that a given piece of content was generated by an AI tool versus being written by a human.",
@@ -1008,6 +1196,148 @@
   },
   "components": {
     "schemas": {
+      "FactCheckerRequest": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": {
+            "description": "The text to scan. It is required except if you supply a website or a file. Minimum 300 characters. Maximum 10,000 characters per request.",
+            "type": "string"
+          },
+          "file": {
+            "description": "A publicly accessible URL to a file to scan. The file must be publicly available online (not a local file path) so our API can access it. The file must be in plain .pdf, .doc or .docx format. The file has priority over the text, so if you give a text and a file, it's the file that will be scanned.",
+            "type": "string"
+          },
+          "website": {
+            "description": "A website URL to scan. If you supply a website, the API will fetch the content of the website and scan it. The website must be publicly accessible. It's important to know that the website has priority over the text and the file, so if you give a text, a file and a website, it's the website that will be scanned.",
+            "type": "string"
+          },
+          "language": {
+            "description": "2 letter language code. Default: auto.\n\nIf you put 'auto', the API will automatically detect the language based on the text.\n\nSupported languages:\n\nArabic (ar), Bengali (bn), Bulgarian (bg), Chinese simplified and traditional (zh), Croatian (hr), Czech (cs), Danish (da), Dutch (nl), English (en), Estonian (et), Finnish (fi), French (fr), German (de), Greek (el), Hebrew (he), Hindi (hi), Hungarian (hu), Indonesian (id), Italian (it), Japanese (ja), Korean (ko), Latvian (lv), Lithuanian (lt), Norwegian (no), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Serbian (sr), Slovak (sk), Slovenian (sl), Spanish (es), Swahili (sw), Swedish (sv), Thai (th), Turkish (tr), Ukrainian (uk), Vietnamese (vi).",
+            "type": "string",
+            "default": "auto"
+          }
+        }
+      },
+      "FactCheckerResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code for the response",
+            "example": 200
+          },
+          "claims": {
+            "type": "array",
+            "description": "List of claims detected in the text along with their fact-checking results.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The unique identifier of the sentence in the input text.",
+                  "example": 1
+                },
+                "sentence": {
+                  "type": "string",
+                  "description": "Exact input sentence from which the claim was extracted."
+                },
+                "claim": {
+                  "type": "string",
+                  "description": "The distinct claim to be fact-checked."
+                },
+                "verdict": {
+                  "type": "string",
+                  "description": "Fact-checking verdict about the claim.",
+                  "enum": ["SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_ENOUGH_EVIDENCE", "REFUTED"]
+                },
+                "score": {
+                  "type": "integer",
+                  "description": "Confidence score (0-100) for the verdict.",
+                  "example": 100
+                },
+                "explanation": {
+                  "type": "string",
+                  "description": "Explanation of the verdict, including supporting reasoning and factual basis."
+                },
+                "links": {
+                  "type": "array",
+                  "description": "List of supporting sources for the claim.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "description": "URL of the supporting reference."
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "Title or domain of the referenced article."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "score": {
+            "type": "integer",
+            "description": "Overall confidence score (0-100) that the provided text is accurate.",
+            "example": 100
+          },
+          "claimsCount": {
+            "type": "integer",
+            "description": "Total number of claims extracted from the text. Maximum 12 per request.",
+            "example": 11
+          },
+          "text": {
+            "type": "string",
+            "description": "The full original text that was analyzed."
+          },
+          "sentences": {
+            "type": "array",
+            "description": "List of sentences from the analyzed text, with IDs for mapping claims to the sentences.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Unique identifier for the sentence in the input text.",
+                  "example": 1
+                },
+                "text": {
+                  "type": "string",
+                  "description": "Sentence text."
+                }
+              }
+            }
+          },
+          "input": {
+            "type": "string",
+            "description": "Indicates the input type, e.g., 'text', 'file', or 'website'."
+          },
+          "language": {
+            "type": "string",
+            "description": "Detected or specified input language (2 letter code).",
+            "example": "en"
+          },
+          "creditsUsed": {
+            "type": "integer",
+            "description": "The number of credits used to process this request.",
+            "example": 1234
+          },
+          "creditsRemaining": {
+            "type": "integer",
+            "description": "The number of remaining credits for the account.",
+            "example": 34567
+          },
+          "wordCount": {
+            "type": "integer",
+            "description": "Word count of the input text.",
+            "example": 617
+          }
+        }
+      },
       "AiContentDetection": {
         "type": "object",
         "required": ["text"],
@@ -1033,8 +1363,9 @@
             "type": "boolean"
           },
           "language": {
-            "description": "2 letter language code. At this time, the API is only available in english (en), french (fr), spanish (es), portuguese (pt), netherlands (nl), german (de), polish (pl), italian (it), romanian (ro), indonesian (id), tagalog (tl) and chinese simplified (zh). You can also use \"auto\" to automatically detect the language based on the text. default: auto. Optional.",
-            "type": "string"
+            "description": "2 letter language code. Default: auto. \n\n If you put 'auto', the API will automatically detect the language based on the text. \n\n Supported languages:\n\nEnglish (en), French (fr), Spanish (es), Portuguese (pt), Dutch (nl), German (de), Polish (pl), Italian (it), Romanian (ro), Indonesian (id), Tagalog (tl) and Chinese simplified (zh).",
+            "type": "string",
+            "default": "auto"
           }
         }
       },
@@ -1138,9 +1469,9 @@
             }
           },
           "language": {
-            "description": "2 letter language code. Default: en. \n\n The plagiarism-checking endpoint currently supports 45 languages: \n English (en), French (fr), German (de), Spanish (es), Portuguese (pt), Dutch (nl), Italian (it), Chinese (zh), Norwegian (no), Swedish (sv), Danish (da), Finnish (fi), Icelandic (is), Irish (ga), Polish (pl), Czech (cs), Slovak (sk), Romanian (ro), Hungarian (hu), Bulgarian (bg), Croatian (hr), Greek (el), Turkish (tr), Hebrew (he), Arabic (ar), Vietnamese (vi), Malay (ms), Thai (th), Korean (ko), Japanese (ja), Russian (ru), Tagalog (tl), Hindi (hi), Bengali (bn), Persian (fa), Urdu (ur), Indonesian (id), Malayalam (ml), Tamil (ta), Telugu (te), Kannada (kn), Marathi (mr), Gujarati (gu), Ukrainian (uk) and Albanian (sq).",
+            "description": "2 letter language code. Default: auto. \n\n If you put 'auto', the API will automatically detect the language of the text. \n\n The plagiarism-checking endpoint currently supports 45 languages: \n English (en), French (fr), German (de), Spanish (es), Portuguese (pt), Dutch (nl), Italian (it), Chinese (zh), Norwegian (no), Swedish (sv), Danish (da), Finnish (fi), Icelandic (is), Irish (ga), Polish (pl), Czech (cs), Slovak (sk), Romanian (ro), Hungarian (hu), Bulgarian (bg), Croatian (hr), Greek (el), Turkish (tr), Hebrew (he), Arabic (ar), Vietnamese (vi), Malay (ms), Thai (th), Korean (ko), Japanese (ja), Russian (ru), Tagalog (tl), Hindi (hi), Bengali (bn), Persian (fa), Urdu (ur), Indonesian (id), Malayalam (ml), Tamil (ta), Telugu (te), Kannada (kn), Marathi (mr), Gujarati (gu), Ukrainian (uk) and Albanian (sq).",
             "type": "string",
-            "default": "en"
+            "default": "auto"
           },
           "country": {
             "description": "The country code of the country where the text was written. We accept all country codes. Default: us.",
@@ -1214,6 +1545,10 @@
               "inputType": {
                 "description": "The type of input we scan based on the input you provided. It can be `text | file | website` .",
                 "type": "string"
+              },
+              "language": {
+                "type": "string",
+                "description": "The language of the text detected."
               }
             }
           },
