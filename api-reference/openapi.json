@@ -2091,6 +2091,166 @@
               }
             }
           },
+          "metadata": {
+            "type": "object",
+            "description": "Image metadata including dimensions, format, color space, and other technical details",
+            "properties": {
+              "orientation": {
+                "type": "integer",
+                "description": "Number value of the EXIF Orientation header, if present"
+              },
+              "format": {
+                "type": "string",
+                "description": "Name of decoder used to decompress image data e.g. jpeg, png, webp, gif, svg"
+              },
+              "size": {
+                "type": "integer",
+                "description": "Total size of image in bytes, for Stream and Buffer input only"
+              },
+              "width": {
+                "type": "integer",
+                "description": "Number of pixels wide (EXIF orientation is not taken into consideration)"
+              },
+              "height": {
+                "type": "integer",
+                "description": "Number of pixels high (EXIF orientation is not taken into consideration)"
+              },
+              "autoOrient": {
+                "type": "object",
+                "description": "Any changed metadata after the image orientation is applied",
+                "properties": {
+                  "width": {
+                    "type": "integer",
+                    "description": "Number of pixels wide (EXIF orientation is taken into consideration)"
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "Number of pixels high (EXIF orientation is taken into consideration)"
+                  }
+                },
+                "required": ["width", "height"]
+              },
+              "space": {
+                "type": "string",
+                "description": "Name of colour space interpretation"
+              },
+              "channels": {
+                "type": "integer",
+                "description": "Number of bands e.g. 3 for sRGB, 4 for CMYK"
+              },
+              "depth": {
+                "type": "string",
+                "description": "Name of pixel depth format e.g. uchar, char, ushort, float"
+              },
+              "density": {
+                "type": "number",
+                "description": "Number of pixels per inch (DPI), if present"
+              },
+              "chromaSubsampling": {
+                "type": "string",
+                "description": "String containing JPEG chroma subsampling, 4:2:0 or 4:4:4 for RGB, 4:2:0:4 or 4:4:4:4 for CMYK"
+              },
+              "isProgressive": {
+                "type": "boolean",
+                "description": "Boolean indicating whether the image is interlaced using a progressive scan"
+              },
+              "isPalette": {
+                "type": "boolean",
+                "description": "Boolean indicating whether the image is palette-based (GIF, PNG)"
+              },
+              "bitsPerSample": {
+                "type": "integer",
+                "description": "Number of bits per sample for each channel (GIF, PNG)"
+              },
+              "pages": {
+                "type": "integer",
+                "description": "Number of pages/frames contained within the image, with support for TIFF, HEIF, PDF, animated GIF and animated WebP"
+              },
+              "pageHeight": {
+                "type": "integer",
+                "description": "Number of pixels high each page in a multi-page image will be"
+              },
+              "loop": {
+                "type": "integer",
+                "description": "Number of times to loop an animated image, zero refers to a continuous loop"
+              },
+              "delay": {
+                "type": "array",
+                "description": "Delay in ms between each page in an animated image, provided as an array of integers",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "pagePrimary": {
+                "type": "integer",
+                "description": "Number of the primary page in a HEIF image"
+              },
+              "hasProfile": {
+                "type": "boolean",
+                "description": "Boolean indicating the presence of an embedded ICC profile"
+              },
+              "hasAlpha": {
+                "type": "boolean",
+                "description": "Boolean indicating the presence of an alpha transparency channel"
+              },
+              "background": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "r": {
+                        "type": "integer"
+                      },
+                      "g": {
+                        "type": "integer"
+                      },
+                      "b": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": ["r", "g", "b"]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "gray": {
+                        "type": "number"
+                      }
+                    },
+                    "required": ["gray"]
+                  }
+                ],
+                "description": "Default background colour, if present, for PNG (bKGD) and GIF images"
+              },
+              "levels": {
+                "type": "array",
+                "description": "Details of each level in a multi-level image provided as an array of objects, requires libvips compiled with support for OpenSlide",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "subifds": {
+                "type": "integer",
+                "description": "Number of Sub Image File Directories in an OME-TIFF image"
+              },
+              "resolutionUnit": {
+                "type": "string",
+                "description": "The unit of resolution (density)"
+              },
+              "formatMagick": {
+                "type": "string",
+                "description": "String containing format for images loaded via *magick"
+              },
+              "comments": {
+                "type": "array",
+                "description": "Array of keyword/text pairs representing PNG text blocks, if present",
+                "items": {
+                  "type": "object"
+                }
+              }
+            },
+            "required": ["format", "width", "height", "autoOrient", "space", "channels", "depth", "isProgressive", "isPalette", "hasProfile", "hasAlpha"]
+          },
           "ai_watermark_detected": {
             "description": "Whether an AI watermark was detected in the image.",
             "type": "boolean"
