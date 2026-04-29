@@ -1,7 +1,10 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
-  "versions" : ["v2", "v1"],
+  "versions": [
+    "v2",
+    "v1"
+  ],
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -52,17 +55,31 @@
   "navigation": [
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction", "api-reference/mcp-server", "api-reference/changelog"]
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/mcp-server",
+        "api-reference/changelog"
+      ]
     },
     {
       "group": "Endpoints",
-      "pages": ["api-reference/v2/ai-content-detection/post", "api-reference/v2/image-detection/post", 
-      "api-reference/v2/plagiarism/post", "api-reference/v2/fact-checker/post", "api-reference/v2/text-compare/post"],
+      "pages": [
+        "api-reference/v2/ai-content-detection/post",
+        "api-reference/v2/image-detection/post",
+        "api-reference/v2/advanced-image-detection/post",
+        "api-reference/v2/plagiarism/post",
+        "api-reference/v2/fact-checker/post",
+        "api-reference/v2/text-compare/post"
+      ],
       "version": "v2"
     },
     {
       "group": "Endpoints",
-      "pages": ["api-reference/v1/ai-content-detection/post", "api-reference/v1/image-detection/post", "api-reference/v1/plagiarism/post"],
+      "pages": [
+        "api-reference/v1/ai-content-detection/post",
+        "api-reference/v1/image-detection/post",
+        "api-reference/v1/plagiarism/post"
+      ],
       "version": "v1"
     }
   ],
